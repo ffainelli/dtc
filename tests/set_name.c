@@ -52,7 +52,7 @@ static void check_set_name(void *fdt, const char *path, const char *newname)
 		FAIL("fdt_get_name(%s) returned \"%s\" instead of \"%s\"",
 		     path, getname, oldname);
 
-	if (len != strlen(getname))
+	if ((size_t)len != strlen(getname))
 		FAIL("fdt_get_name(%s) returned length %d instead of %zd",
 		     path, len, strlen(getname));
 
@@ -69,7 +69,7 @@ static void check_set_name(void *fdt, const char *path, const char *newname)
 		FAIL("fdt_get_name(%s) returned \"%s\" instead of \"%s\"",
 		     path, getname, newname);
 
-	if (len != strlen(getname))
+	if ((size_t)len != strlen(getname))
 		FAIL("fdt_get_name(%s) returned length %d instead of %zd",
 		     path, len, strlen(getname));
 }

@@ -52,7 +52,7 @@ static void check_name(void *fdt, const char *path)
 		FAIL("fdt_get_name(%s) returned \"%s\" instead of \"%s\"",
 		     path, getname, checkname);
 
-	if (len != strlen(getname))
+	if ((size_t)len != strlen(getname))
 		FAIL("fdt_get_name(%s) returned length %d instead of %zd",
 		     path, len, strlen(getname));
 

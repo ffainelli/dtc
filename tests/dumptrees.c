@@ -42,7 +42,7 @@ struct {
 
 int main(int argc, char *argv[])
 {
-	int i;
+	unsigned int i;
 
 	for (i = 0; i < NUM_TREES; i++) {
 		void *blob = trees[i].blob;

@@ -41,6 +41,8 @@ void  __attribute__((weak)) cleanup(void)
 {
 }
 
+#define UNUSED(x)	((void)(x))
+
 static void sigint_handler(int signum, siginfo_t *si, void *uc)
 {
 	cleanup();
@@ -110,13 +112,13 @@ void check_property(void *fdt, int nodeoffset, const char *name,
 	if (!propname || !streq(propname, name))
 		FAIL("Property name mismatch \"%s\" instead of \"%s\"",
 		     propname, name);
-	if (proplen != retlen)
+	if ((int)proplen != retlen)
 		FAIL("Length retrieved for \"%s\" by fdt_get_property()"
 		     " differs from stored length (%d != %d)",
-		     name, retlen, proplen);
-	if (proplen != len)
+		     name, retlen, (int)proplen);
+	if ((int)proplen != len)
 		FAIL("Size mismatch on property \"%s\": %d insead of %d",
-		     name, proplen, len);
+		     name, (int)proplen, len);
 	if (memcmp(val, prop->data, len) != 0)
 		FAIL("Data mismatch on property \"%s\"", name);
 }

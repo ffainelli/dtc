@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
 	if ((h4 == 0x2000) || (h4 == 0x1) || (h4 == 0))
 		FAIL("/node4 has bad phandle, 0x%x", h4);
 
-	if ((h5 == 0) || (h5 == -1))
+	if ((h5 == 0) || (h5 == (uint32_t)-1))
 		FAIL("/node5 has bad phandle, 0x%x", h5);
 	if ((h5 == h4) || (h5 == h2) || (h5 == h1))
 		FAIL("/node5 has duplicate phandle, 0x%x", h5);
