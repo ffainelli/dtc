@@ -72,8 +72,8 @@ static int _fdt_sw_check_header(void *fdt)
 
 static void *_fdt_grab_space(void *fdt, size_t len)
 {
-	int offset = fdt_size_dt_struct(fdt);
-	int spaceleft;
+	unsigned int offset = fdt_size_dt_struct(fdt);
+	unsigned int spaceleft;
 
 	spaceleft = fdt_totalsize(fdt) - fdt_off_dt_struct(fdt)
 		- fdt_size_dt_strings(fdt);
@@ -85,7 +85,7 @@ static void *_fdt_grab_space(void *fdt, size_t len)
 	return _fdt_offset_ptr_w(fdt, offset);
 }
 
-int fdt_create(void *buf, int bufsize)
+int fdt_create(void *buf, unsigned int bufsize)
 {
 	void *fdt = buf;
 
@@ -171,7 +171,8 @@ static int _fdt_find_add_string(void *fdt, const char *s)
 	const char *p;
 	int strtabsize = fdt_size_dt_strings(fdt);
 	int len = strlen(s) + 1;
-	int struct_top, offset;
+	unsigned int struct_top;
+	int offset;
 
 	p = _fdt_find_string(strtab - strtabsize, strtabsize, s);
 	if (p)

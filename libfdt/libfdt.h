@@ -122,7 +122,8 @@
 /* Low-level functions (you probably don't need these)                */
 /**********************************************************************/
 
-const void *fdt_offset_ptr(const void *fdt, int offset, unsigned int checklen);
+const void *fdt_offset_ptr(const void *fdt, unsigned int offset,
+				unsigned int checklen);
 static inline void *fdt_offset_ptr_w(void *fdt, int offset, int checklen)
 {
 	return (void *)(uintptr_t)fdt_offset_ptr(fdt, offset, checklen);
@@ -228,7 +229,7 @@ int fdt_check_header(const void *fdt);
  *     -FDT_ERR_BADVERSION,
  *     -FDT_ERR_BADSTATE, standard meanings
  */
-int fdt_move(const void *fdt, void *buf, int bufsize);
+int fdt_move(const void *fdt, void *buf, unsigned int bufsize);
 
 /**********************************************************************/
 /* Read-only functions                                                */
@@ -1022,7 +1023,7 @@ int fdt_nop_node(void *fdt, int nodeoffset);
 /* Sequential write functions                                         */
 /**********************************************************************/
 
-int fdt_create(void *buf, int bufsize);
+int fdt_create(void *buf, unsigned int bufsize);
 int fdt_add_reservemap_entry(void *fdt, uint64_t addr, uint64_t size);
 int fdt_finish_reservemap(void *fdt);
 int fdt_begin_node(void *fdt, const char *name);

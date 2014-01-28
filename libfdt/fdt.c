@@ -74,7 +74,7 @@ int fdt_check_header(const void *fdt)
 	return 0;
 }
 
-const void *fdt_offset_ptr(const void *fdt, int offset, unsigned int len)
+const void *fdt_offset_ptr(const void *fdt, unsigned int offset, unsigned int len)
 {
 	const char *p;
 
@@ -238,7 +238,7 @@ const char *_fdt_find_string(const char *strtab, int tabsize, const char *s)
 	return NULL;
 }
 
-int fdt_move(const void *fdt, void *buf, int bufsize)
+int fdt_move(const void *fdt, void *buf, unsigned int bufsize)
 {
 	FDT_CHECK_HEADER(fdt);
 
