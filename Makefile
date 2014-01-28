@@ -17,7 +17,8 @@ CONFIG_LOCALVERSION =
 
 CPPFLAGS = -I libfdt -I .
 WARNINGS = -Werror -Wall -Wpointer-arith -Wcast-qual -Wnested-externs \
-	-Wstrict-prototypes -Wmissing-prototypes -Wredundant-decls
+	-Wstrict-prototypes -Wmissing-prototypes -Wredundant-decls \
+	-Wextra -Wno-unused-parameter
 CFLAGS = -g -Os -fPIC -Werror $(WARNINGS)
 
 BISON = bison
